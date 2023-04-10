@@ -15,6 +15,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [📊 ERD Diagram](#erd-diagram)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -67,6 +68,12 @@
 <!-- - [Live Demo Link](https://google.com) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📊 ERD Diagram <a name="erd-diagram"></a>
+
+This is the base ERD diagram for this project
+
+<img src="erd-diagram.png" alt="ERD diagram" />
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
