@@ -5,7 +5,7 @@ class CreateApartments < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :photo
       t.string :city
-      t.float :price
+      t.float :price, precision: 8, scale: 2
 
       t.timestamps
     end
