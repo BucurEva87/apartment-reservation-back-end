@@ -86,7 +86,7 @@ Clone this repository to your desired folder:
 
 ```sh
   git https://github.com/BucurEva87/apartment-reservation-back-end.git
-  cd apartment-reservation
+  cd apartment-reservation-back-end
 ```
 
 ### Install
