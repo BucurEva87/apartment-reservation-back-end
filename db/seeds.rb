@@ -29,3 +29,8 @@ Reservation.create!(
   apartment: Apartment.first,
   user: User.first
 )
+
+Doorkeeper::Application.find_or_create_by(name: "React") do |app|
+  app.redirect_uri = ""
+  app.save!
+end

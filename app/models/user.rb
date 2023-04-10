@@ -11,4 +11,9 @@ class User < ApplicationRecord
                     format: { with: URI::MailTo::EMAIL_REGEXP, message: '%<value>s is not a valid email format' },
                     uniqueness: { case_sensitive: false, message: '%<value>s is already associated to an account' }
   validates :role, inclusion: { in: %w[user admin], message: '%<value>s is not a valid role' }
+
+  def self.authenticate!(email, password)
+    user = find_by(email: email.downcase)
+    user if user&.valid_password?(password)
+  end
 end
