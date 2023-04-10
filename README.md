@@ -138,8 +138,6 @@ Example command:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Abdallah Antony**
 
 - GitHub: [@abdallahmalima](https://github.com/abdallahmalima)
