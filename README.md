@@ -15,6 +15,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [📊 ERD Diagram](#erd-diagram)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -37,6 +38,13 @@
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://react.dev/">React</a></li>
+  </ul>
+</details>
 
 <details>
   <summary>Server</summary>
@@ -65,6 +73,14 @@
 > This project has no live demo, as it stands for the back-end part of the application
 
 <!-- - [Live Demo Link](https://google.com) -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📊 ERD Diagram <a name="erd-diagram"></a>
+
+This is the base ERD diagram for this project
+
+<img src="erd-diagram.png" alt="ERD diagram" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -121,8 +137,6 @@ Example command:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Authors <a name="authors"></a>
-
-> Mention all of the collaborators of this project.
 
 👤 **Abdallah Antony**
 
