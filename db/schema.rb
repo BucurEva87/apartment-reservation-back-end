@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_110121) do
   create_table "apartments", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "photo"
+    t.string "photo", default: "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg"
     t.string "city"
     t.float "price"
     t.datetime "created_at", null: false
