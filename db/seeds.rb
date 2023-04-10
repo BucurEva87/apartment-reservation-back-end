@@ -10,6 +10,7 @@
 User.create!(
   name: 'BucurEva',
   email: 'bucur.eva87@gmail.com',
+  password: '123456',
   role: 'admin'
 )
 
