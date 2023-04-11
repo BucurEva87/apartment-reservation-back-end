@@ -8,9 +8,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30, message: 'must be between 2 and 30 characters' }
   validates :email, presence: true,
-                    format: { with: URI::MailTo::EMAIL_REGEXP, message: '%<value>s is not a valid email format' },
-                    uniqueness: { case_sensitive: false, message: '%<value>s is already associated to an account' }
-  validates :role, inclusion: { in: %w[user admin], message: '%<value>s is not a valid role' }
+                    format: { with: URI::MailTo::EMAIL_REGEXP, message: '%<value> is not a valid email format' },
+                    uniqueness: { case_sensitive: false, message: '%<value> is already associated to an account' }
+  validates :role, inclusion: { in: %w[user admin], message: '%<value> is not a valid role' }
 
   def self.authenticate!(email, password)
     user = find_by(email: email.downcase)
