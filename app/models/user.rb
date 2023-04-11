@@ -6,9 +6,11 @@ class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :apartments, through: :reservations
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }
   validates :email, presence: true,
-                    format: { with: URI::MailTo::EMAIL_REGEXP },
+                    format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :role, inclusion: { in: %w[user admin] }
 
