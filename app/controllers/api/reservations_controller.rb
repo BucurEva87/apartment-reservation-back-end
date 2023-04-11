@@ -1,7 +1,7 @@
 module Api
   class ReservationsController < Api::ApplicationController
     def index
-      @reservations = current_user.reservations.all
+      @reservations = current_user.reservations
       render json: { reservations: @reservations }
     end
 
