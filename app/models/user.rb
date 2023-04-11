@@ -6,11 +6,11 @@ class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :apartments, through: :reservations
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 30, message: 'must be between 2 and 30 characters' }
+  validates :name, presence: true, length: { minimum: 2, maximum: 30 }
   validates :email, presence: true,
-                    format: { with: URI::MailTo::EMAIL_REGEXP, message: '%<value> is not a valid email format' },
-                    uniqueness: { case_sensitive: false, message: '%<value> is already associated to an account' }
-  validates :role, inclusion: { in: %w[user admin], message: '%<value> is not a valid role' }
+                    format: { with: URI::MailTo::EMAIL_REGEXP },
+                    uniqueness: { case_sensitive: false }
+  validates :role, inclusion: { in: %w[user admin] }
 
   def self.authenticate!(email, password)
     user = find_by(email: email.downcase)
