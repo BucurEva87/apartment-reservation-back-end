@@ -17,17 +17,18 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate!' do
+    password = '123456'
     user = User.find_or_create_by(email: "test.user@gmail.com") do |u|
       u.name = "TestUser"
-      u.password = "123456"
+      u.password = password
     end
 
     it 'returns the user when valid email and password are provided' do
-      expect(User.authenticate!(user.email, user.password)).to eq(user)
+      expect(User.authenticate!(user.email, password)).to eq(user)
     end
 
     it 'returns nil when invalid email is provided' do
-      expect(User.authenticate!('invalidemail@marktwain.com', user.email)).to be_nil
+      expect(User.authenticate!('invalidemail@marktwain.com', password)).to be_nil
     end
 
     it 'returns nil when invalid password is provided' do
