@@ -12,7 +12,7 @@ module Api
 
     def create
       if current_user.role != 'admin'
-        render(json: { error: 'Only admin can create an apartment' }, status: 401)
+        render(json: { error: 'Only an admin can create an apartment' }, status: 401)
         return
       end
 
@@ -31,7 +31,7 @@ module Api
 
     def update
       if current_user.role != 'admin'
-        render(json: { error: 'Only admin can update an apartment' }, status: 401)
+        render(json: { error: 'Only an admin can update an apartment' }, status: 401)
         return
       end
 
@@ -46,12 +46,11 @@ module Api
 
     def destroy
       if current_user.role != 'admin'
-        render(json: { error: 'Only admin can destroy an apartment' }, status: 401)
+        render(json: { error: 'Only an admin can destroy an apartment' }, status: 401)
         return
       end
 
       apartment = Apartment.find(params[:id])
-      apartment.reservations.destroy_all
       if apartment.destroy!
         render(json: { success: 'Apartment was destroyed' }, status: :ok)
       else
