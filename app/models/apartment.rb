@@ -2,11 +2,11 @@ class Apartment < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :users, through: :reservations
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 30, message: 'must be between 2 and 30 characters' }
+  validates :name, presence: true, length: { minimum: 2, maximum: 30 }
   validates :description, presence: true
   validate :validate_photo_url
-  validates :city, presence: true, length: { minimum: 2, maximum: 30, message: 'must be between 2 and 30 characters' }
-  validates :price, presence: true, numericality: { greater_than: 0, message: 'must be greater than zero' }
+  validates :city, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :price, presence: true, numericality: { greater_than: 0 }
 
   private
 
