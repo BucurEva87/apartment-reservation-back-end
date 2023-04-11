@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Apartment, type: :model do
-  apartment = Apartment.find_or_create_by(name: "Test Apartment") do |a|
+  apartment = Apartment.find_or_create_by(name: 'Test Apartment') do |a|
     a.description = 'An apartment used for testing purposes',
-    a.city = 'New Delhi',
-    a.price = 2038.5
+                    a.city = 'New Delhi',
+                    a.price = 2038.5
   end
 
   describe 'associations' do

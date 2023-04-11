@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:email).case_insensitive }
     it { should allow_value('huckleberry.finn@marktwain.com').for(:email) }
     it { should_not allow_value('tom.sawyer@marktwain').for(:email) }
-    it { should validate_inclusion_of(:role).in_array(['user', 'admin']) }
+    it { should validate_inclusion_of(:role).in_array(%w[user admin]) }
   end
 
   describe 'associations' do
@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate!' do
     password = '123456'
-    user = User.find_or_create_by(email: "test.user@gmail.com") do |u|
-      u.name = "TestUser"
+    user = User.find_or_create_by(email: 'test.user@gmail.com') do |u|
+      u.name = 'TestUser'
       u.password = password
     end
 

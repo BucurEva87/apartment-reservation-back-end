@@ -12,18 +12,19 @@ class Reservation < ApplicationRecord
   private
 
   def start_date_before_end_date
-    if start_date && end_date && start_date >= end_date
-      errors.add(:start_date, "must be before end date")
-    end
+    return unless start_date && end_date && start_date >= end_date
+
+    errors.add(:start_date, 'must be before end date')
   end
 
   def apartment_not_reserved
     return unless apartment
 
     if apartment.reservations.exists?([
-      "end_date >= ? AND start_date <= ?", 
-      start_date, end_date])
-      errors.add(:apartment, "is already reserved for this period")
+                                        'end_date >= ? AND start_date <= ?',
+                                        start_date, end_date
+                                      ])
+      errors.add(:apartment, 'is already reserved for this period')
     end
   end
 end
