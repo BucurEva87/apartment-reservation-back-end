@@ -17,7 +17,10 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate!' do
-    user = User.create(name: 'TestUser', email: 'test.user@gmail.com', password: '123456')
+    user = User.find_or_create_by(email: "test.user@gmail.com") do |u|
+      u.name = "TestUser"
+      u.password = "123456"
+    end
 
     it 'returns the user when valid email and password are provided' do
       expect(User.authenticate!(user.email, user.password)).to eq(user)
