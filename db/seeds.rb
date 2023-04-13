@@ -53,6 +53,10 @@ doorkeeper = Doorkeeper::Application.find_or_create_by(name: "React") do |app|
   app.save!
 end
 
-puts 'Doorkeeper Application has been created. Please use these values in the front-end'
-puts "client_id is #{doorkeeper.uid}"
-puts "client_secret is #{doorkeeper.read_attribute(:secret)}"
+LIGHTBLUE = "\e[1;34m"
+GREEN = "\e[1;32m"
+RESET = "\e[0m"
+
+puts "#{LIGHTBLUE}Doorkeeper Application has been created. Please use these values in the front-end#{RESET}"
+puts "client_id is #{GREEN}#{doorkeeper.uid}#{RESET}"
+puts "client_secret is #{GREEN}#{doorkeeper.read_attribute(:secret)}#{RESET}"
