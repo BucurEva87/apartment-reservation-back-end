@@ -48,7 +48,11 @@ Reservation.create!(
 )
 
 # Doorkeeper record in oauth_application with uid/client_id and client_secret
-Doorkeeper::Application.find_or_create_by(name: "React") do |app|
+doorkeeper = Doorkeeper::Application.find_or_create_by(name: "React") do |app|
   app.redirect_uri = ""
   app.save!
 end
+
+puts 'Doorkeeper Application has been created. Please use these values in the front-end'
+puts "client_id is #{doorkeeper.uid}"
+puts "client_secret is #{doorkeeper.read_attribute(:secret)}"
