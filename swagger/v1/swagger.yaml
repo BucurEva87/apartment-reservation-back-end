@@ -4,6 +4,87 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/apartments":
+    post:
+      summary: Create new apartment
+      tags:
+      - apartments
+      security:
+      - Bearer: []
+      parameters: []
+      responses:
+        '200':
+          description: Apartment created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                city:
+                  type: string
+                photo:
+                  type: string
+                price:
+                  type: number
+              required:
+              - name
+              - description
+              - city
+              - photo
+              - price
+    get:
+      summary: Index of apartments
+      tags:
+      - apartments
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: Apartment list received
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    city:
+                      type: string
+                    photo:
+                      type: string
+                    price:
+                      type: number
+                  required:
+                  - name
+                  - description
+                  - city
+                  - photo
+                  - price
+  "/api/apartments/{apartment_id}":
+    delete:
+      summary: Delete apartment
+      tags:
+      - apartments
+      security:
+      - Bearer: []
+      parameters:
+      - name: apartment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Apartment deleted
   "/oauth/token":
     post:
       summary: Receive token for existing user
