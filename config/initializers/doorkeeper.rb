@@ -25,7 +25,5 @@ Doorkeeper.configure do
 
   allow_blank_redirect_uri true
   
-  skip_authorization do
-    true
-  end
+  skip_authorization { Rails.env.test? }
 end

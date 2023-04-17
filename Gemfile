@@ -55,4 +55,5 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
+gem 'factory_bot'
 gem 'rswag'

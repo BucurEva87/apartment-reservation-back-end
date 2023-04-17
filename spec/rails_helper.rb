@@ -70,3 +70,6 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+require_relative './factories/user'
+require_relative './factories/apartment'
