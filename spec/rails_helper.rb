@@ -73,3 +73,4 @@ end
 
 require_relative './factories/user'
 require_relative './factories/apartment'
+require_relative './factories/reservation'

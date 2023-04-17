@@ -2,11 +2,11 @@ require 'swagger_helper'
 
 describe 'Apartment reservation API', type: :request do
   let(:user) { create(:user) }
-  let(:token) { Doorkeeper::AccessToken.create!(resource_owner_id: user.id, application_id: 1) }
+  let(:bearer) { Doorkeeper::AccessToken.create!(resource_owner_id: user.id, application_id: 1) }
 
-  it 'returns data with Doorkeeper token' do
+  it 'creates new apartment' do
     post '/api/apartments', headers: {
-      'Authorization' => "Bearer #{token.token}",
+      'Authorization' => "Bearer #{bearer.token}",
       'Content-Type' => 'application/json'
     } do
       tags 'apartments'
@@ -38,9 +38,9 @@ describe 'Apartment reservation API', type: :request do
     end
   end
 
-  it 'returns data with Doorkeeper token' do
+  it 'returns apartments list' do
     get '/api/apartments', headers: {
-      'Authorization' => "Bearer #{token.token}",
+      'Authorization' => "Bearer #{bearer.token}",
       'Content-Type' => 'application/json'
     } do
       tags 'apartments'
@@ -62,11 +62,11 @@ describe 'Apartment reservation API', type: :request do
     end
   end
 
-  let(:id) { create(:apartment).id }
+  let(:apartment) { create(:apartment) }
 
-  it 'returns data with Doorkeeper token' do
-    delete api_apartment_path(id), headers: {
-      'Authorization' => "Bearer #{token.token}",
+  it 'delete an apartment' do
+    delete api_apartment_path(apartment.id), headers: {
+      'Authorization' => "Bearer #{bearer.token}",
       'Content-Type' => 'application/json'
     } do
       tags 'apartments'
