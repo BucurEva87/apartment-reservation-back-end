@@ -7,6 +7,7 @@ describe 'Apartment reservation API', type: :request do
     app.save!
   end
 
+  # rubocop:disable Metrics/BlockLength
   path '/api/users' do
     post 'Create new user with token' do
       tags 'users'
@@ -23,13 +24,11 @@ describe 'Apartment reservation API', type: :request do
         required: %w[name email client_id role password]
       }
 
-      uid = application.uid
-
       response '200', 'Sign up successfull with returned access token' do
         let(:user) do
           { name: 'Jack',
             email: 'jack@example.com',
-            client_id: uid,
+            client_id: application.uid,
             role: 'admin',
             password: '123456' }
         end
@@ -40,6 +39,12 @@ describe 'Apartment reservation API', type: :request do
         let(:user) { { name: 'Jack', role: 'admin', email: 'jack@example.com', password: '123456' } }
         run_test!
       end
+
+      response '422', 'Invalid request' do
+        let(:user) { { client_id: application.uid } }
+        run_test!
+      end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end

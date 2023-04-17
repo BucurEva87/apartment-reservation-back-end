@@ -1,0 +1,77 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/oauth/token":
+    post:
+      summary: Receive token for existing user
+      tags:
+      - users
+      parameters: []
+      responses:
+        '200':
+          description: Returned access token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+              required:
+              - grant_type
+              - email
+              - password
+              - client_id
+              - client_secret
+  "/api/users":
+    post:
+      summary: Create new user with token
+      tags:
+      - users
+      parameters: []
+      responses:
+        '200':
+          description: Sign up successfull with returned access token
+        '403':
+          description: Invalid client ID
+        '422':
+          description: Invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                client_id:
+                  type: string
+                role:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - client_id
+              - role
+              - password
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
