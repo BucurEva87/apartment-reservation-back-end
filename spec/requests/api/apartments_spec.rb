@@ -4,12 +4,16 @@ describe 'Apartment reservation API', type: :request do
   let(:user) { create(:user) }
   let(:bearer) { Doorkeeper::AccessToken.create!(resource_owner_id: user.id, application_id: 1) }
 
-  # rubocop:disable Metrics/BlockLength
-  path '/api/apartments' do
-    post 'Create new apartment' do
+  it 'Create new apartment' do
+    post '/api/apartments', headers: {
+      'Authorization' => "Bearer #{bearer.token}",
+      'Content-Type' => 'application/json'
+    } do
       tags 'apartments'
       security [Bearer: []]
       consumes 'application/json'
+      produces 'application/json'
+
       parameter name: :apartment, in: :body, schema: {
         type: :object,
         properties: {
@@ -32,38 +36,44 @@ describe 'Apartment reservation API', type: :request do
         run_test!
       end
     end
+  end
 
-    get 'Index of apartments' do
+  it 'Receive apartments list' do
+    get '/api/apartments', headers: {
+      'Authorization' => "Bearer #{bearer.token}",
+      'Content-Type' => 'application/json'
+    } do
       tags 'apartments'
       security [Bearer: []]
       produces 'application/json'
-      response '200', 'Apartment list received' do
+
+      response(200, 'Apartment list received') do
         schema type: :array,
-               items: {
-                 type: :object,
-                 properties: {
-                   name: { type: :string },
-                   description: { type: :string },
-                   city: { type: :string },
-                   photo: { type: :string },
-                   price: { type: :number }
-                 },
-                 required: %w[name description city photo price]
-               }
+               properties: {
+                 name: { type: :string },
+                 description: { type: :string },
+                 city: { type: :string },
+                 photo: { type: :string },
+                 price: { type: :number }
+               },
+               required: %w[name description city photo price]
         run_test!
       end
     end
   end
-  # rubocop:enable Metrics/BlockLength
 
-  let(:apartment) { create(:apartment) }
+  let(:id) { create(:apartment).id }
 
-  path '/api/apartments/{apartment_id}' do
-    delete 'Delete apartment' do
+  it 'Delete apartment' do
+    delete api_apartment_path(id), headers: {
+      'Authorization' => "Bearer #{bearer.token}",
+      'Content-Type' => 'application/json'
+    } do
       tags 'apartments'
       security [Bearer: []]
-      parameter name: :apartment_id, in: :path, type: :string
-      response '200', 'Apartment deleted' do
+      produces 'application/json'
+
+      response(200, 'Apartment deleted') do
         run_test!
       end
     end
