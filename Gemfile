@@ -56,4 +56,5 @@ group :test do
 end
 
 gem 'factory_bot'
+gem 'rack-cors'
 gem 'rswag'
