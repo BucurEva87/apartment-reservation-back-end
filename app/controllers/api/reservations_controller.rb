@@ -1,8 +1,8 @@
 module Api
   class ReservationsController < Api::ApplicationController
     def index
-      @reservations = current_user.reservations
-      render json: { reservations: @reservations }
+      @reservations = current_user.reservations.includes(:apartment)
+      render json: { reservations: @reservations.as_json(include: { apartment: {} }) }
     end
 
     def show
