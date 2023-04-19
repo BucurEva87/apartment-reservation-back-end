@@ -85,6 +85,57 @@ paths:
       responses:
         '200':
           description: Apartment deleted
+  "/api/reservations":
+    get:
+      summary: List all reservations for the current user
+      tags:
+      - reservations
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Add a new reservation
+      tags:
+      - reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation was created
+        '401':
+          description: Only an admin or owner can show a reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                apartment_id:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+              required:
+              - apartment_id
+              - start_date
+              - end_date
+  "/api/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: Delete specific reservation by {id}
+      tags:
+      - reservations
+      responses:
+        '200':
+          description: Reservation was destroyed
+        '401':
+          description: Only an admin or owner can destroy a reservation
   "/oauth/token":
     post:
       summary: Receive token for existing user
