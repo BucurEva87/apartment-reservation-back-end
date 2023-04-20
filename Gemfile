@@ -55,7 +55,6 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: %i[development test]
 gem 'factory_bot'
 gem 'rswag'
-
