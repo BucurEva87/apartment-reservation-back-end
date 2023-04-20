@@ -56,4 +56,6 @@ group :test do
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'factory_bot'
+gem 'rswag'
 
