@@ -87,6 +87,10 @@ GEM
     diff-lcs (1.5.0)
     doorkeeper (5.6.6)
       railties (>= 5)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -225,6 +229,7 @@ DEPENDENCIES
   debug
   devise
   doorkeeper
+  dotenv-rails
   factory_bot
   pg (~> 1.1)
   puma (~> 5.0)
@@ -236,7 +241,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.4.10

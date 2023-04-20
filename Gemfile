@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
@@ -55,5 +55,7 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'factory_bot'
 gem 'rswag'
+
