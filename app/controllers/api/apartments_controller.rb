@@ -6,8 +6,8 @@ module Api
     end
 
     def show
-      apartment = Apartment.find(params[:id])
-      render json: { apartment: }
+      @apartment = Apartment.where(id: params[:id]).includes(:reservations)
+      render json: { apartment: @apartment.as_json(include: { reservations: { only: %i[start_date end_date] } }) }
     end
 
     def create
